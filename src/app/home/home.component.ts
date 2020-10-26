@@ -1,11 +1,12 @@
 import { EOF } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { DataService } from '../services/data.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   series: string[] = []; originals;
   talk_show;
   details:any[];
+  cast:[];
 
   closeResult: string;
   title = 'appBootstrap';
@@ -61,41 +63,53 @@ export class HomeComponent implements OnInit {
   getId(id){
     this.dataservice.getVideoById(id)
 .subscribe((resp:any)=>{
-this.details=resp.data
+this.details=resp.data;
+this.cast=resp.data['castCrew']
 // console.log(this.details)
 })
     
   }
 
-
-open(content){
-
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  
-    this.closeResult = `Closed with: ${result}`;
-
-  }, (reason) => {
-
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-
-  });
-
-}
-
-private getDismissReason(reason: any): string {
-
-  if (reason === ModalDismissReasons.ESC) {
-
-    return 'by pressing ESC';
-
-  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-
-    return 'by clicking on a backdrop';
-
-  } else {
-
-    return  `with: ${reason}`;
-
+  openModal(content) {
+    this.modalService.open(content, { size: 'xl' ,
+    backdropClass: 'black-backdrop',
+    windowClass: 'myCustomModalClass'});
   }
 
-}}
+  play(vid){
+vid.play()
+  }
+
+
+}
+// open(content){
+
+//   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  
+//     this.closeResult = `Closed with: ${result}`;
+
+//   }, (reason) => {
+
+//     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+
+//   });
+
+// }
+
+// private getDismissReason(reason: any): string {
+
+//   if (reason === ModalDismissReasons.ESC) {
+
+//     return 'by pressing ESC';
+
+//   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+
+//     return 'by clicking on a backdrop';
+
+//   } else {
+
+//     return  `with: ${reason}`;
+
+//   }
+
+// }}

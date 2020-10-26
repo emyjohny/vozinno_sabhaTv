@@ -35,8 +35,6 @@
       </form>
     </div>
   </nav>
-
-  <body>
     
 
 <!-- carousel section -->
@@ -92,53 +90,87 @@
   <div *ngIf="arrivals">
     <carousel>
       <div class="carousel-cell"  *ngFor="let a of arrivals">
-        <!-- <img src="{{a.thumburl}}" alt="new arrivals" (click)="getVideoById(a.id)"> -->
-        <img src="{{a.thumburl}}" alt="new arrivals" (click)="getId(a.id);open(mymodal)">
+        <img src="{{a.thumburl}}" alt="new arrivals" (click)="getId(a.id);openModal(content)">
 
+       
         
-        <ng-template #mymodal let-modal>
-        
-          <div class="modal-header">
-        
+        <ng-template #content let-modal>
+          
+          <div class="modal-body">
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        
-              <span aria-hidden="true">×</span>
-        
+              <span aria-hidden="true">&times;</span>
             </button>
+            <div class="row">
+              <div class="col-lg-4">
+                <img src="{{details['thumburl']}}" alt="detail_image" width="300" height="400">
+              </div>
+              <div class="col-lg-8"  >
+                <h2>{{details.title}} <i class="fas fa-star"></i></h2>
+                <p>{{details.maturityRating}}</p>
+                <p>{{details.releaseDate| date:'short'}}</p>
+                <p>{{details.synopsis}}</p>
+               
+              <div class="row" >
+                <div class="col-lg-8" *ngFor="let c of cast">
+                  {{c.title }} :{{c.name }}
+                  </div>
+                  <div class="col-lg-2" >
+
+                  </div>
+                </div>
+                <button type="button" class="btn btn-dark" (click)="play(media)"><i class="fas fa-play"></i> Play</button>
+                <button type="button" class="btn btn-dark"><i class="fas fa-heart"></i></button>
+                <button type="button" class="btn btn-dark"><i class="fas fa-share-alt"></i></button>
+             
+            </div>
+               </div>
+             </div>
+                  
+     
         
-          </div>
+       
+        <div class="video-player-wrapper">
+          <vg-player>
+            <vg-overlay-play></vg-overlay-play>
+            <vg-buffering></vg-buffering>
         
-          <div class="modal-body" *ngFor="let detail of (issueTypes$ | async)?.details">
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="{{detail.thumburl}}" alt="detail_image">
-          </div>
-          <div class="col-lg-8">
-            <h2>{{detail.title}}</h2>
-          </div>
+            <vg-scrub-bar>
+              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+        
+            <vg-controls>
+              <vg-play-pause></vg-play-pause>
+              <vg-playback-button></vg-playback-button>
+        
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+        
+              <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+        
+              <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+        
+              <vg-track-selector></vg-track-selector>
+              <vg-mute></vg-mute>
+              <vg-volume></vg-volume>
+        
+              <vg-fullscreen></vg-fullscreen>
+            </vg-controls>
+        
+            <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+              <source src="{{details.videourl}}" type="video/m3u8">
+                <!-- <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4"> -->
+              </video>
+          </vg-player>
         </div>
-           
-         </div>
-        
         </ng-template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+        </div>
+      </carousel>
       </div>
-    </carousel>
-  </div>
+     
+    
+
 
   <!-- documentary section -->
 
@@ -217,8 +249,8 @@
       </div>
     </carousel>
   </div>
-</div>
-</body>
+
+
 
 
 

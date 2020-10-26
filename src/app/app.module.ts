@@ -10,7 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgImageSliderModule } from 'ng-image-slider';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { FooterComponent } from './footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     HttpClientModule,
     NgImageSliderModule,
     IvyCarouselModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
     // CarouselModule
   ],
   providers: [],
