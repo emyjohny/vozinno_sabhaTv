@@ -14,9 +14,10 @@ export class HomeComponent implements OnInit {
   live_videos;
   arrivals;
   documentries;
-  series: string[] = []; originals;
+  series: string[] = [];
+  originals;
   talk_show;
-  details:any[];
+  details:[];
   cast:[];
 
   closeResult: string;
