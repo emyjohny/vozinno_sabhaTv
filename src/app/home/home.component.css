@@ -1,7 +1,7 @@
 
 body {
     background-color: black;
-}
+   }
 
 h6 {
     color: white;
@@ -53,8 +53,9 @@ ngb-carousel {
     z-index: 20;
 } 
 .myCustomModalClass .modal-content {
-    position:relative;
-        background-color: #292b2c;
+    position:absolute;
+    background-color: #000000;
+    opacity: 0.75;
     color: white;
     height: 500px;
     z-index: 100;
@@ -65,7 +66,7 @@ ngb-carousel {
   .black-backdrop {
 
     background-color:#000;
-    opacity: .25;
+   
   }
   .btn{
       margin-right: 20px;
@@ -74,3 +75,12 @@ ngb-carousel {
   .release{
 text-align: right;
   }
+  #singleVideo,.video1 {
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 200;
+  }
+  
+  

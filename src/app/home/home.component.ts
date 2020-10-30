@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   talk_show;
   details:[];
   cast:[];
+  status=false;
 
   closeResult: string;
   title = 'appBootstrap';
@@ -78,7 +79,11 @@ this.cast=resp.data['castCrew']
   }
 
   play(vid){
-vid.play()
+   this.status=true;
+  
+vid.play();
+
+// vid.toggleFullScreen();
   }
 
 
