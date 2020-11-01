@@ -1,0 +1,32 @@
+.myCustomModalClass .modal-content {
+    position:absolute;
+    /* background-color: #000000; */
+    /* opacity: 0.75; */
+    /* color: white; */
+    height: 500px;
+    z-index: 100;
+  }
+  /* .myCustomModalClass .close {
+    color: white;
+  } */
+  .black-backdrop {
+
+    background-color:#000;
+   
+  }
+  .btn{
+      margin-right: 20px;
+      margin-top: 20px;
+  }
+  .release{
+text-align: right;
+  }
+  /* #singleVideo,.video1 {
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 200;
+  }
+   */
+  

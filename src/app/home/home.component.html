@@ -93,83 +93,8 @@
         <img src="{{a.thumburl}}" alt="new arrivals" (click)="getId(a.id);openModal(content)">
 
        
-        
-        <ng-template #content let-modal>
-          
-          <div class="modal-body">
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="row">
-              <div class="col-lg-4">
-                <img src="{{details['thumburl']}}" alt="detail_image" width="300" height="400">
-              </div>
-              <div class="col-lg-8"  >
-                <!-- <h2>{{details.title| uppercase}}<i class="fas fa-star"></i></h2> -->
-                <h2>{{details.title| uppercase}} ⭐</h2>
-                
-                <div class="row">
-                  <div class="col-lg-6">
-                    <p>{{details.maturityRating}}</p>
-                  </div>
-                  <div class="col-lg-6 release">
-                    <p>Release Date: {{details.releaseDate| date:'short'}}</p>
-                  </div>
-                </div>
-            <p>{{details.synopsis}}</p>
-               
-              <div class="row" >
-                <div class="col-lg-8" *ngFor="let c of cast;let i=index">
-                  {{c.title }} :{{c.name }}
-
-                  </div>
-                  <div class="col-lg-2" >
-
-                  </div>
-                </div>
-                              
-                <button type="button" class="btn btn-dark" (click)="play(media)"><i class="fas fa-play"></i> Play</button>
-                <button type="button" class="btn btn-dark"><i class="fas fa-heart"></i></button>
-                <button type="button" class="btn btn-dark"><i class="fas fa-share-alt"></i></button>
-             
-            </div>
-               </div>
-             </div>
-    
-        <div class="video-player-wrapper" >
-          <vg-player>
-            <vg-overlay-play></vg-overlay-play>
-            <vg-buffering></vg-buffering>
-        
-            <vg-scrub-bar>
-              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-            </vg-scrub-bar>
-        
-            <vg-controls>
-              <vg-play-pause></vg-play-pause>
-              <vg-playback-button></vg-playback-button>
-        
-              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-        
-              <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-        
-              <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-              <vg-track-selector></vg-track-selector>
-              <vg-mute></vg-mute>
-              <vg-volume></vg-volume>
-        
-              <vg-fullscreen></vg-fullscreen>
-            </vg-controls>
-        
-            <video [vgMedia]="media" #media id="singleVideo" class="video1" preload="none" crossorigin>
-            <source src="{{details.videourl}}" type="application/x-mpegURL">
-            <!-- <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4"> -->
-              </video>
-          </vg-player>
-        </div>
-        </ng-template>
+        <app-modal [id1]="id" [content] ="content"></app-modal>
+      
    
         </div>
       </carousel>
@@ -177,35 +102,35 @@
 
   <!-- documentary section -->
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-10">
       <h6>Documentries</h6>
     </div>
     <div class="col-2">
       <h6>View All</h6>
     </div>
-  </div>
+  </div> -->
 
-  <div *ngIf="documentries">
+  <!-- <div *ngIf="documentries">
     <carousel>
       <div class="carousel-cell"  *ngFor="let d of documentries">
         <img src="{{d.thumburl}}" alt="Documentaries">
       </div>
     </carousel>
-  </div>
+  </div> -->
 
   <!-- series -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-10">
     <h6>Series</h6>
   </div>
   <div class="col-2">
     <h6>View All</h6>
   </div>
-</div>
+</div> -->
 
-  <div *ngIf="originals">
+  <!-- <div *ngIf="originals">
     <carousel>
       <div class="carousel-cell"  *ngFor="let sa of series">
     
@@ -213,45 +138,45 @@
       
       </div>
     </carousel>
-  </div>
+  </div> -->
 
   <!-- Sabha TV Originals -->
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-10">
       <h6>Sabha TV Originals</h6>
     </div>
     <div class="col-2">
       <h6>View All</h6>
     </div>
-  </div>
+  </div> -->
 
-  <div *ngIf="originals">
+  <!-- <div *ngIf="originals">
     <carousel>
       <div class="carousel-cell"  *ngFor="let o of originals">
         <img src="{{o.thumburl}}"  alt="originals">
       </div>
     </carousel>
-  </div>
+  </div> -->
 
   <!-- Talk Show -->
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-10">
       <h6>Talk Show</h6>
     </div>
     <div class="col-2">
       <h6>View All</h6>
     </div>
-  </div>
+  </div> -->
 
-  <div *ngIf="talk_show">
+  <!-- <div *ngIf="talk_show">
     <carousel>
       <div class="carousel-cell"  *ngFor="let t of talk_show">
         <img src="{{t.thumburl}}"  alt="talk show">
       </div>
     </carousel>
-  </div>
+  </div> -->
 
 
 

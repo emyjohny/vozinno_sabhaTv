@@ -1,12 +1,12 @@
 import { EOF } from '@angular/compiler';
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  encapsulation: ViewEncapsulation.None,
+  
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
@@ -20,11 +20,13 @@ export class HomeComponent implements OnInit {
   details:[];
   cast:[];
   status=false;
-
+  id="";
+  content:any="";
+ 
   closeResult: string;
   title = 'appBootstrap';
  
-  constructor(private dataservice:DataService,private modalService: NgbModal) { 
+  constructor(private dataservice:DataService) { 
     this.getBanners();
     this.getHomeVideos();    
   }
@@ -63,19 +65,13 @@ export class HomeComponent implements OnInit {
  
 
   getId(id){
-    this.dataservice.getVideoById(id)
-.subscribe((resp:any)=>{
-this.details=resp.data;
-this.cast=resp.data['castCrew']
-// console.log(this.details)
-})
-    
+this.id=id;
+  // alert(this.id)
   }
 
   openModal(content) {
-    this.modalService.open(content, { size: 'xl' ,
-    backdropClass: 'black-backdrop',
-    windowClass: 'myCustomModalClass'});
+    this.content=content;
+    console.log(this.content)
   }
 
   play(vid){
@@ -88,34 +84,3 @@ vid.play();
 
 
 }
-// open(content){
-
-//   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  
-//     this.closeResult = `Closed with: ${result}`;
-
-//   }, (reason) => {
-
-//     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-
-//   });
-
-// }
-
-// private getDismissReason(reason: any): string {
-
-//   if (reason === ModalDismissReasons.ESC) {
-
-//     return 'by pressing ESC';
-
-//   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-
-//     return 'by clicking on a backdrop';
-
-//   } else {
-
-//     return  `with: ${reason}`;
-
-//   }
-
-// }}
